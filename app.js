@@ -11,6 +11,8 @@ app.use(express.static('public'));
 app.engine('handlebars', exphbs.engine());
 app.set('view engine', 'handlebars');
 
+
+app.use(express.static("public"))
 let pacotes = [];
 
 
@@ -37,7 +39,11 @@ app.post('/cadastro', (req, res) => {
   pacotes.push({ id, remetente, destinatario, endereco });
   res.redirect('/pacotes');
 });
-
+app.post('/pacotes/delete/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  pacotes = pacotes.filter(pacote => pacote.id !== id);
+  res.redirect('/pacotes');
+});
 app.listen(port, () => {
   console.log(`Server rodando na porta ${port}`)
 });
