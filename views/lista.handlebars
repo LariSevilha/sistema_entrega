@@ -1,7 +1,11 @@
-
-  <h1>Lista de Pacotes</h1>
-  <ul>
-    {{#each pacotes}}
-    <li><a href="/pacotes/{{id}}">{{remetente}} para {{destinatario}}</a></li>
-    {{/each}}
-  </ul>
+<ul>
+  {{#each pacotes}}
+    <li class="card">
+      <a href="/pacotes/{{id}}">
+        <p><strong>Remetente:</strong> {{remetente}}</p>
+        <p><strong>Destinatário:</strong> {{destinatario}}</p>
+        <p><strong>Endereço de entrega:</strong> {{endereco}}</p>
+      </a>
+    </li>
+  {{/each}}
+</ul>

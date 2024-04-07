@@ -41,9 +41,13 @@ app.post('/cadastro', (req, res) => {
 });
 app.post('/pacotes/delete/:id', (req, res) => {
   const id = parseInt(req.params.id);
-  pacotes = pacotes.filter(pacote => pacote.id !== id);
+  const index = pacotes.findIndex(pacote => pacote.id === id);
+  if (index !== -1) {
+    pacotes.splice(index, 1);
+  }
   res.redirect('/pacotes');
 });
+
 app.listen(port, () => {
   console.log(`Server rodando na porta ${port}`)
 });
